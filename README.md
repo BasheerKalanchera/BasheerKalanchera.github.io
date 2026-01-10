@@ -1,2 +1,3 @@
 # Portfolio Website
-AI-powered multi-agent stock analysis system showcase
+
+Showcasing my AI-powered multi-agent stock analysis system and other projects.
