@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Stock Research Workbench - Enterprise-grade multi-agent stock analysis platform automating comprehensive equity research">
+    <meta name="keywords" content="AI, Stock Analysis, Multi-Agent, LangGraph, Gemini AI, Financial Research">
+    <meta name="author" content="ZABISK">
+    <title>AI Stock Research Workbench | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+    <style>
+        /* Additional styles specific to this page */
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: var(--spacing-lg);
+        }
+
+        .agent-card {
+            background-color: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+            border-left: 4px solid var(--primary);
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .agent-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .agent-card h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .agent-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.938rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .agent-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .agent-output {
+            background-color: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.938rem;
+            color: var(--text-secondary);
+        }
+
+        .agent-output strong {
+            color: var(--text-primary);
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: var(--spacing-lg);
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .feature-highlight {
+            background-color: var(--bg-primary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+
+        .feature-highlight h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .innovation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: var(--spacing-lg);
+        }
+
+        .innovation-card {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--primary);
+        }
+
+        .innovation-number {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .architecture-container {
+            background-color: var(--bg-tertiary);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>AI Stock Research Workbench</span>
+            </div>
+            <h1>AI Stock Research Workbench</h1>
+            <p class="project-tagline">Enterprise-grade, multi-agent stock analysis platform that automates
+                comprehensive equity research through intelligent orchestration of 7 specialized AI agents</p>
+            <div class="project-hero-cta">
+                <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
+                    class="cta-button primary" target="_blank">Launch Application</a>
+                <a href="#overview" class="cta-button secondary">Explore Features</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/stock_workbench_card_1768542521107.png" alt="AI Stock Research Workbench">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>🎯 The Problem</h3>
+                    <p>
+                        Traditional equity research is time-intensive, requiring analysts to manually download and
+                        parse 10 years of financial statements, read hundreds of pages of earnings transcripts and
+                        presentations, cross-reference credit ratings and regulatory filings, and synthesize
+                        qualitative and quantitative insights into actionable investment theses.
+                    </p>
+                    <p style="font-weight: 600; color: var(--primary);">
+                        Result: A single comprehensive stock report can take 8-12 hours of analyst time.
+                    </p>
+
+                    <h3>💡 The Solution</h3>
+                    <p>
+                        A crew-based multi-agent workbench that orchestrates 7 specialized AI agents through a
+                        LangGraph state machine, each focusing on a distinct research dimension. The system automates
+                        data acquisition from Screener.in, parallelizes analysis across quantitative, qualitative,
+                        strategy, risk, and valuation domains, and synthesizes insights into professional PDF reports
+                        with charts, tables, and investment recommendations.
+                    </p>
+                    <p style="font-weight: 600; color: var(--primary);">
+                        Impact: Reduces research time from 8+ hours to under 10 minutes per stock.
+                    </p>
+
+                    <h3>Key Capabilities</h3>
+                    <ul class="feature-list">
+                        <li>Automated data acquisition from Screener.in (India's leading financial data platform)</li>
+                        <li>Parallel analysis across 7 specialized AI agents</li>
+                        <li>Professional PDF reports with embedded charts and tables</li>
+                        <li>Stateless architecture enabling true serverless deployment</li>
+                        <li>Intelligent model fallback for 99%+ completion rate</li>
+                        <li>10 pre-configured research workflows from full analysis to targeted deep-dives</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>Fintech AI Platform</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Production Ready</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Category</h4>
+                        <p>Stock Analysis</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Time Savings</h4>
+                        <p>8+ hrs → 10 min</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Architecture Section -->
+    <section class="project-section architecture-section">
+        <div class="project-container">
+            <h2>🏗️ System Architecture</h2>
+            <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
+                The workbench uses LangGraph for stateless state management with io.BytesIO virtualization to handle
+                Excel/PDF files in-memory. The Resilience Governor provides automatic model fallback (Gemini 2.0 Flash
+                ⇄ Flash Lite) and retry logic. Below is the complete architecture showing all 7 agents and their data
+                flow.
+            </p>
+            <div class="architecture-container">
+                <iframe src="Architecture Full workflow.html" frameborder="0" width="100%" height="700"
+                    style="border-radius: var(--radius-lg); background-color: white;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Agent Crew Section -->
+    <section class="project-section">
+        <div class="project-container">
+            <h2>👥 The Agent Crew</h2>
+            <p style="max-width: 900px; margin: 0 auto var(--spacing-md); text-align: center; font-size: 1.125rem;">
+                Seven specialized AI agents work in orchestrated harmony, each focusing on a distinct dimension of
+                equity research
+            </p>
+
+            <div class="agent-grid">
+                <!-- Agent 1: Screener Download Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">📥</div>
+                    <h4>Screener Download Agent</h4>
+                    <div class="agent-role">The Data Orchestrator</div>
+                    <p>
+                        Authenticates with Screener.in using Playwright automation and downloads 10-year financial
+                        statements, credit reports, analyst presentations, and earnings transcripts. Populates shared
+                        state with structured ByteStream objects for downstream agents.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Tech:</strong> Playwright, BeautifulSoup, Pandas
+                    </div>
+                </div>
+
+                <!-- Agent 2: Quantitative Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">📊</div>
+                    <h4>Quantitative Agent</h4>
+                    <div class="agent-role">The Number Cruncher</div>
+                    <p>
+                        Parses Excel ByteStreams to analyze 40+ financial metrics and generates time-series
+                        visualizations including revenue/profit trends, margin analysis, and cash flow patterns.
+                        Identifies inflection points and anomalies in financial performance.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> Interactive charts + narrative insights on financial health
+                    </div>
+                </div>
+
+                <!-- Agent 3: Strategy Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">🎯</div>
+                    <h4>Strategy Agent</h4>
+                    <div class="agent-role">The Business Decoder</div>
+                    <p>
+                        Extracts strategic pillars from quarterly investor presentations through PDF parsing. Identifies
+                        growth drivers, capital allocation priorities, and management guidance. Detects shifts in
+                        business model or market positioning.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> Strategic roadmap summary with key initiatives
+                    </div>
+                </div>
+
+                <!-- Agent 4: Risk Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">⚠️</div>
+                    <h4>Risk Agent</h4>
+                    <div class="agent-role">The Forensic Analyst</div>
+                    <p>
+                        Analyzes credit rating reports for debt covenants and financial stress indicators. Scans MD&A
+                        sections for operational/regulatory risks and flags red flags like declining coverage ratios and
+                        rising contingent liabilities.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> Credit risk scorecard with early warning indicators
+                    </div>
+                </div>
+
+                <!-- Agent 5: Qualitative Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">🔍</div>
+                    <h4>Qualitative Agent</h4>
+                    <div class="agent-role">The Deep-Dive Specialist (Sub-Crew)</div>
+                    <p>
+                        A crew within a crew, comprising 4 mini-agents: SEBI Violation Checker (live search of
+                        regulatory orders), Latest Earnings Analyzer (management tone extraction), QoQ Concall
+                        Comparator
+                        (sentiment tracking), and Scuttlebutt Investigator (employee reviews and news sentiment).
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> Comprehensive qualitative risk/opportunity matrix
+                    </div>
+                </div>
+
+                <!-- Agent 6: Valuation Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">💰</div>
+                    <h4>Valuation Agent</h4>
+                    <div class="agent-role">The Peer Benchmarker</div>
+                    <p>
+                        Fetches peer group financial data for same-sector companies and compares P/E, P/B, EV/EBITDA,
+                        ROE versus industry averages. Identifies whether stock is trading at discount/premium to
+                        intrinsic value.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> Relative valuation matrix + fair value range
+                    </div>
+                </div>
+
+                <!-- Agent 7: Synthesis Agent -->
+                <div class="agent-card">
+                    <div class="agent-icon">📝</div>
+                    <h4>Synthesis Agent</h4>
+                    <div class="agent-role">The Report Writer</div>
+                    <p>
+                        Aggregates outputs from all 6 specialist agents and generates structured investment thesis with
+                        executive summary, bull/bear cases, conviction rating (1-5 scale), and key catalysts and risks.
+                    </p>
+                    <div class="agent-output">
+                        <strong>Output:</strong> 15-20 page PDF report with embedded charts
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Highlights Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>🔧 Technical Highlights</h2>
+
+            <div class="feature-highlight">
+                <h4>Multi-Modal Document Processing</h4>
+                <ul class="feature-list">
+                    <li><strong>Excel Parsing:</strong> pandas + openpyxl for financial statement analysis</li>
+                    <li><strong>PDF Extraction:</strong> PyPDF2 + GPT-4 Vision for presentation/transcript parsing</li>
+                    <li><strong>Web Scraping:</strong> Playwright with session management for authenticated data access
+                    </li>
+                </ul>
+            </div>
+
+            <div class="feature-highlight">
+                <h4>Intelligent Agent Communication</h4>
+                <ul class="feature-list">
+                    <li><strong>Shared State Object:</strong> All agents read/write to a unified StockAnalysisState
+                        (TypedDict)</li>
+                    <li><strong>Conditional Edges:</strong> LangGraph routes data based on availability (e.g., skip
+                        Strategy Agent if no PPT found)</li>
+                    <li><strong>Parallel Execution:</strong> Quant, Strategy, and Risk agents run concurrently for 3x
+                        speedup</li>
+                </ul>
+            </div>
+
+            <div class="feature-highlight">
+                <h4>Production-Grade Features</h4>
+                <ul class="feature-list">
+                    <li><strong>TPM Rate Limiting:</strong> 10-second cooldown between batch analyses to respect API
+                        quotas</li>
+                    <li><strong>Incremental Commits:</strong> Results saved immediately after each stock for crash
+                        recovery</li>
+                    <li><strong>Workflow Modes:</strong> Users can run full analysis or isolated deep-dives (e.g.,
+                        "Valuation Only")</li>
+                    <li><strong>Batch Processing:</strong> Analyze 20+ stocks sequentially with automatic ZIP export
+                    </li>
+                </ul>
+            </div>
+
+            <div class="feature-highlight">
+                <h4>Model Architecture</h4>
+                <p>
+                    <strong>Primary Models:</strong> Gemini 2.0 Flash Exp (heavy reasoning tasks), Gemini 2.0 Flash Lite
+                    (data extraction)
+                </p>
+                <p>
+                    <strong>Fallback Strategy:</strong> Token limit exceeded → Switch to Flash Lite | Request quota hit
+                    → Retry with exponential backoff
+                </p>
+                <p style="font-weight: 600; color: var(--primary);">Total failures: &lt;1% in production</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact Section -->
+    <section class="project-section">
+        <div class="project-container">
+            <h2>📊 Results & Impact</h2>
+
+            <h3 style="text-align: center; margin-bottom: var(--spacing-lg);">Performance Metrics</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-value">10 min</div>
+                    <div class="metric-label">Per comprehensive report (vs. 8+ hours manual)</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">95%+</div>
+                    <div class="metric-label">Data extraction accuracy validated against analyst reports</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">6 stocks/hr</div>
+                    <div class="metric-label">Processing capacity in batch mode</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: var(--spacing-xl);">Use Cases</h3>
+            <div class="agent-grid">
+                <div class="agent-card">
+                    <h4>📈 Retail Investors</h4>
+                    <p>Generate institutional-quality research without Bloomberg Terminal</p>
+                </div>
+                <div class="agent-card">
+                    <h4>💼 Portfolio Managers</h4>
+                    <p>Screen hundreds of stocks for quarterly rebalancing</p>
+                </div>
+                <div class="agent-card">
+                    <h4>🔬 Research Analysts</h4>
+                    <p>Automate 80% of grunt work, focus on strategy refinement</p>
+                </div>
+                <div class="agent-card">
+                    <h4>✅ Compliance Teams</h4>
+                    <p>Batch-check portfolios for SEBI violations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Innovations Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>🚀 What Makes This Special</h2>
+            <div class="innovation-grid">
+                <div class="innovation-card">
+                    <div class="innovation-number">Innovation #1</div>
+                    <h4>Crew-of-Crews Architecture</h4>
+                    <p>The Qualitative Analyst itself manages 4 sub-agents, demonstrating hierarchical agent
+                        coordination—a pattern rarely seen in production systems.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-number">Innovation #2</div>
+                    <h4>Zero-Disk Orchestration</h4>
+                    <p>Files never touch the filesystem. All data flows through memory buffers (io.BytesIO), enabling
+                        true serverless deployment.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-number">Innovation #3</div>
+                    <h4>Adaptive Workflow Engine</h4>
+                    <p>Users can invoke any sub-graph in isolation (e.g., just run Risk Agent), making this a research
+                        toolkit rather than a monolithic pipeline.</p>
+                </div>
+
+                <div class="innovation-card">
+                    <div class="innovation-number">Innovation #4</div>
+                    <h4>Multi-Modal Input Fusion</h4>
+                    <p>Combines structured data (Excel), unstructured text (PDFs), and real-time web searches into a
+                        unified analytical framework.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>LangGraph</h4>
+                    <p>Agent orchestration and workflow management</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Google Gemini 2.0</h4>
+                    <p>AI reasoning and analysis</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Streamlit</h4>
+                    <p>Interactive dashboard UI</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Playwright</h4>
+                    <p>Web automation for data retrieval</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Screener.in API</h4>
+                    <p>Financial data source</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Tavily Search API</h4>
+                    <p>Web intelligence gathering</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Pandas</h4>
+                    <p>Data processing and analysis</p>
+                </div>
+                <div class="tech-item">
+                    <h4>PyPDF2</h4>
+                    <p>PDF document parsing</p>
+                </div>
+                <div class="tech-item">
+                    <h4>BeautifulSoup</h4>
+                    <p>HTML parsing and scraping</p>
+                </div>
+                <div class="tech-item">
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory file handling</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>MCP</h4>
+                    <p>Model Context Protocol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Ready to Transform Your Stock Research?</h2>
+            <p>Experience institutional-quality analysis in minutes, not hours</p>
+            <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
+                class="cta-button primary large" target="_blank">Launch Application</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>

@@ -162,3 +162,10 @@ document.addEventListener('click', function (e) {
         e.preventDefault();
     }
 });
+
+// ==========================================
+// Email Reveal Function
+// ==========================================
+function revealEmail() {
+    window.location.href = 'mailto:basheer@zabisk.com';
+}

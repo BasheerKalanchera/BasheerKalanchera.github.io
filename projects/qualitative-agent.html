@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Qualitative Analysis Agent - Intelligent stock analysis using earnings transcripts and web research">
+    <meta name="keywords" content="AI, Stock Analysis, Qualitative Analysis, LangGraph, Gemini AI">
+    <meta name="author" content="ZABISK">
+    <title>AI Qualitative Analysis Agent | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>Qualitative Analysis Agent</span>
+            </div>
+            <h1>AI Qualitative Analysis Agent</h1>
+            <p class="project-tagline">This Agent performs Qualitative analysis for a given stock using
+                transcripts downloaded from screener.in and websearch using Tavily API</p>
+            <div class="project-hero-cta">
+                <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
+                    class="cta-button primary" target="_blank">Launch Application</a>
+                <a href="#overview" class="cta-button secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/qualitative_agent_card_1768542479672.png" alt="Qualitative Analysis Agent">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Comprehensive qualitative stock analysis requires tracking regulatory compliance, analyzing
+                        management
+                        sentiment across quarters, gathering market intelligence from multiple sources, and integrating
+                        insights
+                        from strategy and risk assessments. Manual analysis is time-intensive and prone to missing
+                        subtle signals.
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        The AI Qualitative Analysis Agent performs sophisticated, sequential analysis using a 4-step
+                        framework.
+                        It integrates context from Strategy and Risk agents, processes earnings transcripts in RAM for
+                        privacy,
+                        and leverages web intelligence to provide comprehensive qualitative insights. The agent checks
+                        SEBI compliance,
+                        analyzes management tone, compares quarter-over-quarter sentiment shifts, and performs
+                        "Scuttlebutt" market research.
+                    </p>
+
+                    <h3>Sequential Analysis Framework</h3>
+                    <ul class="feature-list">
+                        <li><strong>SEBI Violation Check:</strong> Automated regulatory compliance screening for Indian
+                            market violations</li>
+                        <li><strong>Latest Concall Analysis:</strong> Sentiment detection, management tone, and forward
+                            guidance extraction</li>
+                        <li><strong>QoQ Comparison:</strong> Quarter-over-quarter tracking of management sentiment and
+                            strategic priority shifts</li>
+                        <li><strong>Scuttlebutt Intelligence:</strong> Web-based market research gathering customer,
+                            supplier, and expert opinions</li>
+                    </ul>
+
+                    <h3>Key Differentiators</h3>
+                    <ul class="feature-list">
+                        <li><strong>Cross-Agent Collaboration:</strong> Integrates Strategy Agent (Moat analysis) and
+                            Risk Agent (Fraud indicators) outputs</li>
+                        <li><strong>Privacy-First Architecture:</strong> Zero disk footprint - all PDF processing in
+                            virtual memory (io.BytesIO)</li>
+                        <li><strong>Sequential Orchestration:</strong> LangGraph manages dependencies and API rate
+                            limits intelligently</li>
+                        <li><strong>Automated Data Retrieval:</strong> Web automation for Screener.in login and document
+                            downloads</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>Fintech AI Tool</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Production Ready</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Category</h4>
+                        <p>Stock Analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="project-section architecture-section">
+        <div class="project-container">
+            <h2>System Architecture</h2>
+            <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
+                The Qualitative Analysis Agent follows a sequential workflow with cross-agent collaboration.
+                Below is the detailed architecture showing data flow, agent interactions, and the 4-step analysis
+                framework.
+            </p>
+            <div class="architecture-container">
+                <iframe src="qualitative-agent-architecture.html" frameborder="0" width="100%" height="600"
+                    style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LangGraph</h4>
+                    <p>Sequential workflow orchestration</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Gemini AI</h4>
+                    <p>NLP and sentiment analysis</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Tavily API</h4>
+                    <p>Intelligent web search for Scuttlebutt</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Screener.in</h4>
+                    <p>Automated document retrieval</p>
+                </div>
+                <div class="tech-item">
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory data processing</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Selenium/Playwright</h4>
+                    <p>Web automation for login</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Streamlit</h4>
+                    <p>Interactive dashboard UI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video Section -->
+    <section class="project-section demo-section">
+        <div class="project-container">
+            <h2>Demo Video</h2>
+            <div class="video-container">
+                <a href="https://www.youtube.com/watch?v=Pk5Kcx4p4Zg" target="_blank" class="video-thumbnail-link">
+                    <img src="https://img.youtube.com/vi/Pk5Kcx4p4Zg/maxresdefault.jpg"
+                        alt="AI Qualitative Analysis Agent Demo" class="video-thumbnail">
+                    <div class="play-button-overlay">
+                        <svg width="68" height="48" viewBox="0 0 68 48">
+                            <path
+                                d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z"
+                                fill="#f00"></path>
+                            <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Try It Yourself</h2>
+            <p>Experience the power of AI-driven qualitative stock analysis</p>
+            <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
+                class="cta-button primary large" target="_blank">Launch Application</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
