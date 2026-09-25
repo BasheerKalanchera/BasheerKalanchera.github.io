@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Halal Gold Investment Assistant — a grounded RAG assistant that answers questions on Shariah-compliant gold investing strictly from a curated knowledge base.">
+    <meta name="keywords"
+        content="AI, RAG, Islamic Finance, Shariah Compliant, Gold ETF, LangChain, Gemini AI, FAISS, Streamlit">
+    <meta name="author" content="ZABISK">
+    <title>AI Halal Gold Investment Assistant | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>Fintech</span> / <span>Halal Gold Investment
+                    Assistant</span>
+            </div>
+            <h1>AI Halal Gold Investment Assistant</h1>
+            <p class="project-tagline">A grounded AI assistant that answers questions on Shariah-compliant ways to
+                invest in gold — strictly from a curated knowledge base, and honest when it doesn't know.</p>
+            <div class="project-hero-cta">
+                <a href="#architecture" class="cta-button primary">How It Works</a>
+                <a href="#overview" class="cta-button secondary">Overview</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/halal_gold_portfolio_card_1768618424705.png"
+                alt="AI Halal Gold Investment Assistant">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Muslim investors who want exposure to gold face a confusing landscape: Gold ETFs, Sovereign
+                        Gold Bonds, digital gold and gold funds all look similar, but differ sharply on Shariah
+                        compliance — physical backing, interest income and certification all matter. General-purpose
+                        chatbots answer such questions confidently but without sources, which is risky when the topic
+                        is a religious ruling.
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        A Retrieval-Augmented Generation (RAG) assistant that answers only from a curated knowledge
+                        base of expert questions and answers, compiled from publicly available sources. It covers
+                        Shariah compliance of Gold ETFs and Sovereign Gold Bonds, AAOIFI standards, compliance
+                        screening lists, Zakat on gold investments and regulation in India. When the knowledge base
+                        doesn't cover a question, the assistant says so plainly instead of guessing — and records the
+                        question so the knowledge base can be improved.
+                    </p>
+
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>Grounded Answers Only:</strong> The model is instructed to answer strictly from
+                            retrieved context and to use no outside knowledge</li>
+                        <li><strong>Honest "I Don't Know":</strong> A fixed fallback response when the answer isn't
+                            in the knowledge base — no invented rulings</li>
+                        <li><strong>Self-Improving Knowledge Base:</strong> Unanswered questions are logged to Google
+                            Sheets, showing exactly which gaps to fill next</li>
+                        <li><strong>Disclaimer-First Design:</strong> Clearly states that it is not investment or
+                            Shariah advice</li>
+                    </ul>
+
+                    <h3>Engineering Highlights</h3>
+                    <ul class="feature-list">
+                        <li><strong>Question-Answer Integrity:</strong> The knowledge base is split on explicit
+                            section markers, so each question is always retrieved together with its complete
+                            answer — never a half-answer cut mid-way</li>
+                        <li><strong>Fallback as a Signal:</strong> The fixed "not enough information" response
+                            doubles as a trigger — the app detects it and logs the question automatically</li>
+                        <li><strong>Local Embeddings:</strong> Instruction-tuned Instructor embeddings run on the
+                            server itself, so searching the knowledge base costs nothing — only answer generation
+                            calls Gemini</li>
+                        <li><strong>Built Once, Reused:</strong> The embedding model and search index are cached, so
+                            only the first question pays the start-up cost</li>
+                        <li><strong>Stable Content IDs:</strong> Each knowledge-base section is identified by a
+                            SHA-256 hash of its content, giving consistent, duplicate-safe references</li>
+                        <li><strong>Consistent Answers:</strong> Generation runs at zero temperature, so the same
+                            question gets the same answer</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>AI Question-Answering Assistant (RAG)</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Domain</h4>
+                        <p>Islamic Finance</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Knowledge Base</h4>
+                        <p>~38 curated Q&amp;As from public sources</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Prototype — not currently live</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="project-section architecture-section" id="architecture">
+        <div class="project-container">
+            <h2>How It Works</h2>
+            <p>
+                Every question follows the same path: find the most relevant knowledge, answer only from it, and
+                feed anything unanswered back into improving the knowledge base.
+            </p>
+
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <h4>Ask</h4>
+                    <p>The user types a question about halal gold investing</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Retrieve</h4>
+                    <p>Semantic search finds the 10 most relevant Q&amp;A sections</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Ground</h4>
+                    <p>Gemini writes an answer using only those sections</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Answer</h4>
+                    <p>A clear answer — or an honest "not enough information"</p>
+                </div>
+            </div>
+            <div class="flow-loopback">↺ Unanswered questions are logged to Google Sheets to grow the knowledge base
+            </div>
+            <p class="flow-footnote">
+                Search runs entirely on the app's own server using local embeddings and a FAISS index; only the
+                final answer is generated by Google's latest Gemini models.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Streamlit</h4>
+                    <p>Interactive web interface</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LangChain</h4>
+                    <p>Retrieval and question-answering pipeline</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Google Gemini</h4>
+                    <p>Google's latest Gemini models for grounded answer generation</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Instructor Embeddings</h4>
+                    <p>Hugging Face instruction-tuned embeddings, run locally</p>
+                </div>
+                <div class="tech-item">
+                    <h4>FAISS</h4>
+                    <p>Fast in-memory vector search</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Google Sheets API</h4>
+                    <p>Logging of unanswered questions</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Dev Containers</h4>
+                    <p>One-click, reproducible development environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Need a Trustworthy AI Assistant?</h2>
+            <p>This prototype is not currently live. Get in touch to discuss a grounded AI assistant built on your
+                own knowledge base.</p>
+            <div class="project-hero-cta project-cta-buttons">
+                <a href="../index.html#contact" class="cta-button primary large">Get in Touch</a>
+                <a href="../index.html#work" class="cta-button secondary large">Back to Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
