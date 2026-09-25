@@ -339,6 +339,108 @@
     transform: translateY(-2px);
 }
 
+.project-cta-section .cta-button.secondary {
+    color: white;
+    border-color: white;
+}
+
+.project-cta-section .cta-button.secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-color: white;
+}
+
+.project-cta-buttons {
+    justify-content: center;
+}
+
+/* Flow Diagram */
+.flow-diagram {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: stretch;
+    margin: var(--spacing-md) 0;
+    counter-reset: flow-step;
+}
+
+.flow-step {
+    flex: 1;
+    position: relative;
+    background-color: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--neutral-light);
+    box-shadow: var(--shadow-sm);
+    counter-increment: flow-step;
+}
+
+.flow-step::before {
+    content: counter(flow-step, decimal-leading-zero);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.flow-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: calc(-1 * var(--spacing-md) / 2);
+    top: 50%;
+    transform: translate(50%, -50%);
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.project-section .flow-step p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.flow-loopback {
+    margin-top: calc(-1 * var(--spacing-sm));
+    padding: var(--spacing-sm);
+    border-top: 2px dashed var(--neutral);
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.project-section .flow-footnote {
+    font-size: 0.938rem;
+    color: var(--text-light);
+}
+
+.flow-badge {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.2rem 0.6rem;
+    background-color: var(--primary-dark);
+    color: #FFFFFF;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Architecture Figure */
+.arch-figure {
+    max-width: 739px;
+    margin: var(--spacing-md) auto 0;
+}
+
+.arch-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .project-hero {
@@ -396,5 +498,21 @@
 
     .project-section {
         padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .flow-diagram {
+        flex-direction: column;
+    }
+
+    .flow-step:not(:last-child)::after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: calc(-1 * var(--spacing-md) / 2);
+        transform: translate(50%, 50%);
+    }
+
+    .flow-loopback {
+        margin-top: 0;
     }
 }

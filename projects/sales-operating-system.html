@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="A target-driven Sales Operating System for a medical equipment distributor — from sales target to realised revenue.">
+    <meta name="keywords"
+        content="Sales Operating System, Sales OS, FastAPI, React, PostgreSQL, Row-Level Security, Medical Equipment Sales">
+    <meta name="author" content="ZABISK">
+    <title>Sales Operating System | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>Healthcare</span> / <span>Sales Operating System</span>
+            </div>
+            <h1>Sales Operating System</h1>
+            <p class="project-tagline">A target-driven Sales Operating System built for a leading medical equipment
+                distributor in South India — replacing activity-tracking CRM habits with a closed loop from sales
+                target to realised revenue.</p>
+            <div class="project-hero-cta">
+                <a href="#architecture" class="cta-button primary">Explore Architecture</a>
+                <a href="#overview" class="cta-button secondary">System Overview</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/sales_operating_system_card.png" alt="Sales Operating System">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Selling capital medical equipment is not a volume game. A single deal — an imaging system, a
+                        set of ICU monitors, an operating-theatre upgrade — can take months, and the decision sits
+                        with a committee: clinicians, biomedical engineers, purchase managers and administrators, each
+                        with different priorities. Traditional CRMs respond by asking reps to log every call and
+                        visit. The result is plenty of activity data and very little answer to the question
+                        leadership actually cares about: are we on track to hit this quarter's target, and where will
+                        the shortfall come from?
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        The Sales OS is organised around the target, not the activity log. Every quarter starts with a
+                        target, cascades to the hospitals that must be covered to reach it, flows into the deals being
+                        worked at those hospitals, and closes with revenue measured against the original target.
+                        Activity is still captured — but as evidence feeding that loop, not as an end in itself.
+                    </p>
+
+                    <h3>Core Operating Framework</h3>
+                    <ul class="feature-list">
+                        <li><strong>Target Planning:</strong> Company targets cascade through business units down to
+                            individual reps, split by brand and tracked quarter by quarter.</li>
+                        <li><strong>Account Coverage:</strong> Planning which hospitals each rep must cover each
+                            quarter to reach target — currently rolling out.</li>
+                        <li><strong>Opportunity Pipeline:</strong> Leads become deals that move through defined stages
+                            with gate checks; winning or losing is recorded as an outcome, kept separate from the
+                            pipeline stage.</li>
+                        <li><strong>Projects &amp; Tenders:</strong> A hospital expansion or a state government
+                            procurement tender is modelled as a project that groups several related deals.</li>
+                        <li><strong>Stakeholder-First Intelligence:</strong> Sentiment (Promoter / Neutral /
+                            Detractor) is tracked for each person on the buying committee, not just for the hospital
+                            as a whole.</li>
+                        <li><strong>Customer 360:</strong> Each hospital's purchase history and installed equipment in
+                            a single view.</li>
+                    </ul>
+
+                    <h3>Key Differentiators</h3>
+                    <ul class="feature-list">
+                        <li><strong>Quota-driven, not activity-driven:</strong> Every screen answers "how does this
+                            move us toward target?"</li>
+                        <li><strong>Business-unit isolation in the database:</strong> Two SBUs share one system, and
+                            each sees only its own data — enforced by PostgreSQL Row-Level Security, not just hidden on
+                            screen.</li>
+                        <li><strong>Governed pipeline:</strong> Stage gates, with a manager-attested override when a
+                            deal legitimately needs to skip a step; every change to key records is captured in an
+                            audit trail.</li>
+                        <li><strong>Rep judgement plus system logic:</strong> Win probability combines a systematic,
+                            stage-based value with the rep's own override.</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>Enterprise Sales Operating System</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Domain</h4>
+                        <p>Medical Equipment Distribution</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Structure</h4>
+                        <p>2 SBUs · multiple sales zones</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>In daily use by the sales team — further modules rolling out</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sales Process Section -->
+    <section class="project-section" id="process">
+        <div class="project-container">
+            <h2>The Sales Process</h2>
+            <p>
+                The system runs as a closed loop: each stage feeds the next, and results flow back into the next
+                quarter's planning.
+            </p>
+
+            <h3>The Operating Loop</h3>
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <h4>Target</h4>
+                    <p>Company → SBU → Rep, split by brand</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Coverage <span class="flow-badge">Rolling out</span></h4>
+                    <p>Which hospitals, in which quarter</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Opportunity</h4>
+                    <p>Leads → staged deals, grouped into projects &amp; tenders</p>
+                </div>
+                <div class="flow-step">
+                    <h4>Revenue</h4>
+                    <p>Won deals measured against target in role-based dashboards</p>
+                </div>
+            </div>
+            <div class="flow-loopback">↺ Results inform the next quarter's targets</div>
+            <p class="flow-footnote">
+                Won and Lost are outcomes, not pipeline stages — so a deal's stage history stays intact whatever the
+                result.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="project-section architecture-section" id="architecture">
+        <div class="project-container">
+            <h2>System Architecture</h2>
+            <p>
+                A React web app, a Python FastAPI layer for business rules and workflows, and a PostgreSQL database
+                on Supabase with Row-Level Security.
+            </p>
+            <figure class="arch-figure">
+                <img src="../assets/images/sales-operating-system-architecture-diagram.png"
+                    alt="Sales Operating System architecture: users connect over HTTPS to a React web app, which calls a Python FastAPI logic layer over REST; both reach a PostgreSQL database on Supabase with Row-Level Security, and the API connects to future accounting and service integrations">
+            </figure>
+        </div>
+    </section>
+
+    <!-- Core Capabilities Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Core Capabilities</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Target Allocation</h4>
+                    <p>Company → SBU → rep targets, split by brand</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Opportunity Pipeline</h4>
+                    <p>Kanban sorted by win probability and priority, with stage gates</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Projects &amp; Tenders</h4>
+                    <p>Expansions and government tenders grouping related deals</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Stakeholder Sentiment</h4>
+                    <p>Promoter / Neutral / Detractor per buying-committee member</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Customer 360</h4>
+                    <p>Purchase history and installed equipment per hospital</p>
+                </div>
+                <div class="tech-item">
+                    <h4>SBU Data Isolation</h4>
+                    <p>Database-enforced separation between two business units</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Lead Review Queue</h4>
+                    <p>Marketing-sourced leads reviewed before becoming deals</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Audit Trail &amp; Alerts</h4>
+                    <p>Change history on key records; bell notifications and urgent alerts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>PostgreSQL 17</h4>
+                    <p>Core data store, hosted on Supabase</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Row-Level Security</h4>
+                    <p>Per-SBU and per-role data access enforced in the database</p>
+                </div>
+                <div class="tech-item">
+                    <h4>FastAPI</h4>
+                    <p>Python API layer for business rules and workflows</p>
+                </div>
+                <div class="tech-item">
+                    <h4>React + TypeScript</h4>
+                    <p>Web front end, built with Vite</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Material UI</h4>
+                    <p>Component and design framework</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Alembic</h4>
+                    <p>Versioned, repeatable database schema migrations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="project-section">
+        <div class="project-container">
+            <h2>Roadmap — Phase 2</h2>
+            <p>Phase 1 establishes the target-to-revenue loop. Phase 2 builds on the data it collects.</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>AI Engagement Insights</h4>
+                    <p>Once enough rep activity has built up, AI summaries of all rep activity for a customer —
+                        surfacing where the relationship stands and what needs attention</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Marketing Website Integration</h4>
+                    <p>Leads from external marketing websites flowing straight into the lead review queue</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Accounting Integration</h4>
+                    <p>Connecting sales records with the accounting system</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Service Application Integration</h4>
+                    <p>Connecting with the service team's application for a fuller customer picture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Interested in a Similar System?</h2>
+            <p>This is a private client system, so there's no public demo. Get in touch to discuss what a
+                target-driven sales system could look like for your team.</p>
+            <div class="project-hero-cta project-cta-buttons">
+                <a href="../index.html#contact" class="cta-button primary large">Get in Touch</a>
+                <a href="../index.html#work" class="cta-button secondary large">Back to Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
