@@ -257,8 +257,8 @@
             <h2>🏗️ System Architecture</h2>
             <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
                 The workbench uses LangGraph for stateless state management with io.BytesIO virtualization to handle
-                Excel/PDF files in-memory. The Resilience Governor provides automatic model fallback (Gemini 2.0 Flash
-                ⇄ Flash Lite) and retry logic. Below is the complete architecture showing all 7 agents and their data
+                Excel/PDF files in-memory. The Resilience Governor provides automatic model fallback (primary Gemini
+                model ⇄ lightweight Gemini model) and retry logic. Below is the complete architecture showing all 7 agents and their data
                 flow.
             </p>
             <div class="architecture-container">
@@ -430,11 +430,11 @@
             <div class="feature-highlight">
                 <h4>Model Architecture</h4>
                 <p>
-                    <strong>Primary Models:</strong> Gemini 2.0 Flash Exp (heavy reasoning tasks), Gemini 2.0 Flash Lite
-                    (data extraction)
+                    <strong>Primary Models:</strong> Google's latest Gemini models — a higher-capability model for heavy
+                    reasoning tasks and a lightweight model for data extraction
                 </p>
                 <p>
-                    <strong>Fallback Strategy:</strong> Token limit exceeded → Switch to Flash Lite | Request quota hit
+                    <strong>Fallback Strategy:</strong> Token limit exceeded → Switch to lightweight model | Request quota hit
                     → Retry with exponential backoff
                 </p>
                 <p style="font-weight: 600; color: var(--primary);">Total failures: &lt;1% in production</p>
@@ -531,7 +531,7 @@
                     <p>Agent orchestration and workflow management</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Google Gemini 2.0</h4>
+                    <h4>Google's latest Gemini models</h4>
                     <p>AI reasoning and analysis</p>
                 </div>
                 <div class="tech-item">
