@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="AI Qualitative Analysis Agent - Intelligent stock analysis using earnings transcripts and web research">
-    <meta name="keywords" content="AI, Stock Analysis, Qualitative Analysis, LangGraph, Gemini AI">
+        content="AI Valuation Analysis Agent - sector-aware peer valuation of Indian stocks using Screener.in data">
+    <meta name="keywords" content="AI, Stock Analysis, Valuation, Peer Comparison, LangGraph, Gemini AI">
     <meta name="author" content="ZABISK">
-    <title>AI Qualitative Analysis Agent | ZABISK</title>
+    <title>AI Valuation Analysis Agent | ZABISK</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +45,10 @@
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="breadcrumb">
-                <a href="../index.html">Portfolio</a> / <span>Qualitative Analysis Agent</span>
+                <a href="../index.html">Portfolio</a> / <span>Valuation Analysis Agent</span>
             </div>
-            <h1>AI Qualitative Analysis Agent</h1>
-            <p class="project-tagline">This Agent performs Qualitative analysis for a given stock using
-                transcripts downloaded from screener.in and websearch using Tavily API</p>
+            <h1>AI Valuation Analysis Agent</h1>
+            <p class="project-tagline">This agent does sector-aware peer valuation of a stock based on data retrieved from screener.in, and tells you whether it looks undervalued, fairly valued or overvalued</p>
             <div class="project-hero-cta">
                 <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                     class="cta-button primary" target="_blank">Launch Application</a>
@@ -57,7 +56,7 @@
             </div>
         </div>
         <div class="project-hero-image">
-            <img src="../assets/images/qualitative_agent_card_1768542479672.png" alt="Qualitative Analysis Agent">
+            <img src="../assets/images/valuation_agent_card_1768541643668.png" alt="Valuation Analysis Agent">
         </div>
     </section>
 
@@ -69,48 +68,29 @@
                 <div class="content-main">
                     <h3>The Challenge</h3>
                     <p>
-                        Comprehensive qualitative stock analysis requires tracking regulatory compliance, analyzing
-                        management
-                        sentiment across quarters, gathering market intelligence from multiple sources, and integrating
-                        insights
-                        from strategy and risk assessments. Manual analysis is time-intensive and prone to missing
-                        subtle signals.
+                        A P/E of 40 can be cheap for one company and expensive for another. Judging value means comparing a company with its closest rivals, using the measures that matter for its industry: net interest margin for a bank, revenue per bed for a hospital, order book for a capital goods maker. Done by hand, this is slow, and generic AI tools tend to fill gaps with numbers they have made up.
                     </p>
 
                     <h3>The Solution</h3>
                     <p>
-                        The AI Qualitative Analysis Agent performs sophisticated, sequential analysis using a 4-step
-                        framework.
-                        It integrates context from Strategy and Risk agents, processes earnings transcripts in RAM for
-                        privacy,
-                        and leverages web intelligence to provide comprehensive qualitative insights. The agent checks
-                        SEBI compliance,
-                        analyzes management tone, compares quarter-over-quarter sentiment shifts, and performs
-                        "Scuttlebutt" market research.
+                        The AI Valuation Analysis Agent pulls the peer comparison table from Screener.in, runs the Quantitative and Strategy agents first to gather verified financial ratios and industry KPIs, and then loads a valuation rulebook written for the company's sector. It compares the company with its 3-5 closest peers, checks governance, and gives a clear verdict, citing only numbers that appear in the data it was given.
                     </p>
 
-                    <h3>Sequential Analysis Framework</h3>
+                    <h3>Valuation Framework</h3>
                     <ul class="feature-list">
-                        <li><strong>SEBI Violation Check:</strong> Automated regulatory compliance screening for Indian
-                            market violations</li>
-                        <li><strong>Latest Concall Analysis:</strong> Sentiment detection, management tone, and forward
-                            guidance extraction</li>
-                        <li><strong>QoQ Comparison:</strong> Quarter-over-quarter tracking of management sentiment and
-                            strategic priority shifts</li>
-                        <li><strong>Scuttlebutt Intelligence:</strong> Web-based market research gathering customer,
-                            supplier, and expert opinions</li>
+                        <li><strong>Sector Rulebook:</strong> Loads one of 11 sector-specific valuation methodologies (banking, pharma, IT, FMCG, hospitals, auto and more), with a general fallback</li>
+                        <li><strong>Peer Selection:</strong> Identifies the target company in the peer table and selects its 3-5 closest competitors</li>
+                        <li><strong>Sector Metric Check:</strong> Evaluates every metric the sector rulebook asks for against its benchmark, with a short assessment for each</li>
+                        <li><strong>Governance Check:</strong> Flags promoter share pledging as a red flag</li>
+                        <li><strong>Valuation Verdict:</strong> Compares the company with the peer average and classifies it as Undervalued, Fairly Valued or Overvalued</li>
                     </ul>
 
                     <h3>Key Differentiators</h3>
                     <ul class="feature-list">
-                        <li><strong>Cross-Agent Collaboration:</strong> Integrates Strategy Agent (Moat analysis) and
-                            Risk Agent (Fraud indicators) outputs</li>
-                        <li><strong>Privacy-First Architecture:</strong> Zero disk footprint - all PDF processing in
-                            virtual memory (io.BytesIO)</li>
-                        <li><strong>Sequential Orchestration:</strong> LangGraph manages dependencies and API rate
-                            limits intelligently</li>
-                        <li><strong>Automated Data Retrieval:</strong> Web automation for Screener.in login and document
-                            downloads</li>
+                        <li><strong>Grounded Output:</strong> Uses only values present in the supplied data; missing metrics are marked "Data Not Available" instead of guessed</li>
+                        <li><strong>Cross-Agent Context:</strong> Builds on the Quantitative Agent's pre-computed ratios and the Strategy Agent's sector KPIs</li>
+                        <li><strong>Pluggable Sector Skills:</strong> Valuation rules live in editable Markdown files, so a new sector can be added without code changes</li>
+                        <li><strong>Resilient Execution:</strong> Automatic retries and model fallback when API rate limits are hit</li>
                     </ul>
                 </div>
 
@@ -139,12 +119,10 @@
         <div class="project-container">
             <h2>System Architecture</h2>
             <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
-                The Qualitative Analysis Agent follows a sequential workflow with cross-agent collaboration.
-                Below is the detailed architecture showing data flow, agent interactions, and the 4-step analysis
-                framework.
+                The Valuation Agent runs last in its workflow. Data is fetched once, the Quantitative and Strategy agents build the context, and the Valuation Agent applies the sector rulebook to produce its verdict.
             </p>
             <div class="architecture-container">
-                <iframe src="qualitative-agent-architecture.html" frameborder="0" width="100%" height="600"
+                <iframe src="valuation-agent-architecture.html" frameborder="0" width="100%" height="600"
                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
             </div>
         </div>
@@ -165,23 +143,27 @@
                 </div>
                 <div class="tech-item">
                     <h4>Gemini AI</h4>
-                    <p>NLP and sentiment analysis</p>
+                    <p>Peer comparison and valuation reasoning</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Tavily API</h4>
-                    <p>Intelligent web search for Scuttlebutt</p>
+                    <h4>Markdown Skills</h4>
+                    <p>Sector-specific valuation rulebooks</p>
+                </div>
+                <div class="tech-item">
+                    <h4>pandas</h4>
+                    <p>Peer table cleaning and normalisation</p>
                 </div>
                 <div class="tech-item">
                     <h4>Screener.in</h4>
                     <p>Automated document retrieval</p>
                 </div>
                 <div class="tech-item">
-                    <h4>io.BytesIO</h4>
-                    <p>In-memory data processing</p>
+                    <h4>Playwright</h4>
+                    <p>Web automation for login and downloads</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Selenium/Playwright</h4>
-                    <p>Web automation for login</p>
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory data processing</p>
                 </div>
                 <div class="tech-item">
                     <h4>Streamlit</h4>
@@ -195,7 +177,7 @@
     <section class="project-cta-section">
         <div class="project-container">
             <h2>Try It Yourself</h2>
-            <p>Experience the power of AI-driven qualitative stock analysis</p>
+            <p>Experience AI-driven, sector-aware stock valuation</p>
             <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                 class="cta-button primary large" target="_blank">Launch Application</a>
         </div>

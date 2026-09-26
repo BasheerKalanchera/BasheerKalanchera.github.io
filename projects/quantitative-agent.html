@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="AI Qualitative Analysis Agent - Intelligent stock analysis using earnings transcripts and web research">
-    <meta name="keywords" content="AI, Stock Analysis, Qualitative Analysis, LangGraph, Gemini AI">
+        content="AI Quantitative Analysis Agent - automated analysis of 10 years of financial statements from Screener.in">
+    <meta name="keywords" content="AI, Stock Analysis, Quantitative Analysis, Financial Statements, LangGraph, Gemini AI">
     <meta name="author" content="ZABISK">
-    <title>AI Qualitative Analysis Agent | ZABISK</title>
+    <title>AI Quantitative Analysis Agent | ZABISK</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +45,10 @@
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="breadcrumb">
-                <a href="../index.html">Portfolio</a> / <span>Qualitative Analysis Agent</span>
+                <a href="../index.html">Portfolio</a> / <span>Quantitative Analysis Agent</span>
             </div>
-            <h1>AI Qualitative Analysis Agent</h1>
-            <p class="project-tagline">This Agent performs Qualitative analysis for a given stock using
-                transcripts downloaded from screener.in and websearch using Tavily API</p>
+            <h1>AI Quantitative Analysis Agent</h1>
+            <p class="project-tagline">This Agent performs Quantitative analysis for a given stock using the 10-year Excel sheet downloaded from screener.in, with charts and a written assessment</p>
             <div class="project-hero-cta">
                 <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                     class="cta-button primary" target="_blank">Launch Application</a>
@@ -57,7 +56,7 @@
             </div>
         </div>
         <div class="project-hero-image">
-            <img src="../assets/images/qualitative_agent_card_1768542479672.png" alt="Qualitative Analysis Agent">
+            <img src="../assets/images/quantitative_agent_card_1768542079017.png" alt="Quantitative Analysis Agent">
         </div>
     </section>
 
@@ -69,48 +68,28 @@
                 <div class="content-main">
                     <h3>The Challenge</h3>
                     <p>
-                        Comprehensive qualitative stock analysis requires tracking regulatory compliance, analyzing
-                        management
-                        sentiment across quarters, gathering market intelligence from multiple sources, and integrating
-                        insights
-                        from strategy and risk assessments. Manual analysis is time-intensive and prone to missing
-                        subtle signals.
+                        Ten years of profit and loss, balance sheet and cash flow statements hold the real story of a company, but reading them line by line takes time. The most important question is easy to miss: is the profit the company reports actually turning into cash?
                     </p>
 
                     <h3>The Solution</h3>
                     <p>
-                        The AI Qualitative Analysis Agent performs sophisticated, sequential analysis using a 4-step
-                        framework.
-                        It integrates context from Strategy and Risk agents, processes earnings transcripts in RAM for
-                        privacy,
-                        and leverages web intelligence to provide comprehensive qualitative insights. The agent checks
-                        SEBI compliance,
-                        analyzes management tone, compares quarter-over-quarter sentiment shifts, and performs
-                        "Scuttlebutt" market research.
+                        The AI Quantitative Analysis Agent downloads the company's financial data sheet from Screener.in, parses the three statements, calculates operating profit margins itself, and asks Gemini for a structured, data-driven assessment. The result is a report that combines six charts with written analysis, positive highlights and red flags.
                     </p>
 
-                    <h3>Sequential Analysis Framework</h3>
+                    <h3>Analysis Framework</h3>
                     <ul class="feature-list">
-                        <li><strong>SEBI Violation Check:</strong> Automated regulatory compliance screening for Indian
-                            market violations</li>
-                        <li><strong>Latest Concall Analysis:</strong> Sentiment detection, management tone, and forward
-                            guidance extraction</li>
-                        <li><strong>QoQ Comparison:</strong> Quarter-over-quarter tracking of management sentiment and
-                            strategic priority shifts</li>
-                        <li><strong>Scuttlebutt Intelligence:</strong> Web-based market research gathering customer,
-                            supplier, and expert opinions</li>
+                        <li><strong>Revenue and Profitability:</strong> Year-on-year sales and net profit growth, and the operating profit margin trend</li>
+                        <li><strong>Balance Sheet:</strong> Borrowings trend and growth in reserves</li>
+                        <li><strong>Cash Flow Quality:</strong> Cash from operations compared with net profit, year by year and cumulatively</li>
+                        <li><strong>Overall Summary:</strong> Key findings, 2-3 positive highlights and 2-3 red flags to monitor</li>
                     </ul>
 
                     <h3>Key Differentiators</h3>
                     <ul class="feature-list">
-                        <li><strong>Cross-Agent Collaboration:</strong> Integrates Strategy Agent (Moat analysis) and
-                            Risk Agent (Fraud indicators) outputs</li>
-                        <li><strong>Privacy-First Architecture:</strong> Zero disk footprint - all PDF processing in
-                            virtual memory (io.BytesIO)</li>
-                        <li><strong>Sequential Orchestration:</strong> LangGraph manages dependencies and API rate
-                            limits intelligently</li>
-                        <li><strong>Automated Data Retrieval:</strong> Web automation for Screener.in login and document
-                            downloads</li>
+                        <li><strong>Visual Report:</strong> Six charts: sales vs profit, margin trend, borrowings, reserves, operating cash flow, and cash flow vs profit</li>
+                        <li><strong>Independent Margin Calculation:</strong> Operating margin is computed from the raw expense lines rather than taken on trust</li>
+                        <li><strong>Feeds Other Agents:</strong> Its summary is reused by the Valuation and Synthesis agents as verified financial context</li>
+                        <li><strong>Privacy-First Architecture:</strong> The spreadsheet and charts are processed entirely in memory (io.BytesIO)</li>
                     </ul>
                 </div>
 
@@ -139,12 +118,10 @@
         <div class="project-container">
             <h2>System Architecture</h2>
             <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
-                The Qualitative Analysis Agent follows a sequential workflow with cross-agent collaboration.
-                Below is the detailed architecture showing data flow, agent interactions, and the 4-step analysis
-                framework.
+                The Quantitative Agent follows a simple two-step workflow: the downloader fetches the Excel data sheet into memory, and the agent turns it into charts and analysis for the dashboard.
             </p>
             <div class="architecture-container">
-                <iframe src="qualitative-agent-architecture.html" frameborder="0" width="100%" height="600"
+                <iframe src="quantitative-agent-architecture.html" frameborder="0" width="100%" height="600"
                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
             </div>
         </div>
@@ -165,23 +142,27 @@
                 </div>
                 <div class="tech-item">
                     <h4>Gemini AI</h4>
-                    <p>NLP and sentiment analysis</p>
+                    <p>Financial statement analysis</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Tavily API</h4>
-                    <p>Intelligent web search for Scuttlebutt</p>
+                    <h4>pandas</h4>
+                    <p>Parsing the Excel data sheet</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Matplotlib</h4>
+                    <p>In-memory chart generation</p>
                 </div>
                 <div class="tech-item">
                     <h4>Screener.in</h4>
                     <p>Automated document retrieval</p>
                 </div>
                 <div class="tech-item">
-                    <h4>io.BytesIO</h4>
-                    <p>In-memory data processing</p>
+                    <h4>Playwright</h4>
+                    <p>Web automation for login and downloads</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Selenium/Playwright</h4>
-                    <p>Web automation for login</p>
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory data processing</p>
                 </div>
                 <div class="tech-item">
                     <h4>Streamlit</h4>
@@ -195,7 +176,7 @@
     <section class="project-cta-section">
         <div class="project-container">
             <h2>Try It Yourself</h2>
-            <p>Experience the power of AI-driven qualitative stock analysis</p>
+            <p>Experience AI-driven quantitative stock analysis</p>
             <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                 class="cta-button primary large" target="_blank">Launch Application</a>
         </div>

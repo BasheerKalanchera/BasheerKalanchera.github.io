@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="AI Qualitative Analysis Agent - Intelligent stock analysis using earnings transcripts and web research">
-    <meta name="keywords" content="AI, Stock Analysis, Qualitative Analysis, LangGraph, Gemini AI">
+        content="AI Strategy Analysis Agent - tests a company's investor presentation against its credit rating report">
+    <meta name="keywords" content="AI, Stock Analysis, Strategy, Investor Presentation, LangGraph, Gemini AI">
     <meta name="author" content="ZABISK">
-    <title>AI Qualitative Analysis Agent | ZABISK</title>
+    <title>AI Strategy Analysis Agent | ZABISK</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +45,10 @@
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="breadcrumb">
-                <a href="../index.html">Portfolio</a> / <span>Qualitative Analysis Agent</span>
+                <a href="../index.html">Portfolio</a> / <span>Strategy Analysis Agent</span>
             </div>
-            <h1>AI Qualitative Analysis Agent</h1>
-            <p class="project-tagline">This Agent performs Qualitative analysis for a given stock using
-                transcripts downloaded from screener.in and websearch using Tavily API</p>
+            <h1>AI Strategy Analysis Agent</h1>
+            <p class="project-tagline">This agent analyses the investor presentation downloaded from screener.in, checks it against the credit rating report, and writes an investment memo</p>
             <div class="project-hero-cta">
                 <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                     class="cta-button primary" target="_blank">Launch Application</a>
@@ -57,7 +56,7 @@
             </div>
         </div>
         <div class="project-hero-image">
-            <img src="../assets/images/qualitative_agent_card_1768542479672.png" alt="Qualitative Analysis Agent">
+            <img src="../assets/images/strategy_agent_card_1768542378591.png" alt="Strategy Analysis Agent">
         </div>
     </section>
 
@@ -69,48 +68,29 @@
                 <div class="content-main">
                     <h3>The Challenge</h3>
                     <p>
-                        Comprehensive qualitative stock analysis requires tracking regulatory compliance, analyzing
-                        management
-                        sentiment across quarters, gathering market intelligence from multiple sources, and integrating
-                        insights
-                        from strategy and risk assessments. Manual analysis is time-intensive and prone to missing
-                        subtle signals.
+                        An investor presentation is the story management wants investors to believe, told with carefully chosen numbers. Separating the real drivers of value from the sales pitch means reading it alongside an independent source and knowing which signals matter for the kind of company it is.
                     </p>
 
                     <h3>The Solution</h3>
                     <p>
-                        The AI Qualitative Analysis Agent performs sophisticated, sequential analysis using a 4-step
-                        framework.
-                        It integrates context from Strategy and Risk agents, processes earnings transcripts in RAM for
-                        privacy,
-                        and leverages web intelligence to provide comprehensive qualitative insights. The agent checks
-                        SEBI compliance,
-                        analyzes management tone, compares quarter-over-quarter sentiment shifts, and performs
-                        "Scuttlebutt" market research.
+                        The AI Strategy Analysis Agent reads the investor presentation and the credit rating report side by side. It first decides what kind of company this is, then looks for the signals that matter for that type, and writes a memo that sets the pitch against the reality check. If a presentation is too large to analyse in one pass, it reads it in sections and combines the findings.
                     </p>
 
-                    <h3>Sequential Analysis Framework</h3>
+                    <h3>Investment Memo Framework</h3>
                     <ul class="feature-list">
-                        <li><strong>SEBI Violation Check:</strong> Automated regulatory compliance screening for Indian
-                            market violations</li>
-                        <li><strong>Latest Concall Analysis:</strong> Sentiment detection, management tone, and forward
-                            guidance extraction</li>
-                        <li><strong>QoQ Comparison:</strong> Quarter-over-quarter tracking of management sentiment and
-                            strategic priority shifts</li>
-                        <li><strong>Scuttlebutt Intelligence:</strong> Web-based market research gathering customer,
-                            supplier, and expert opinions</li>
+                        <li><strong>Narrative Diagnosis:</strong> Classifies the company as a Compounder, Aggressor, Turnaround or Special Situation</li>
+                        <li><strong>The Sales Pitch:</strong> Summarises the story management is selling and the metrics it highlights most</li>
+                        <li><strong>The Reality Check:</strong> Uses the credit report to test the pitch: margin mix, capex efficiency and hidden assets</li>
+                        <li><strong>Sector KPIs:</strong> Extracts the 3-5 operating numbers that define the industry's health, such as NIM for banks or order book for capital goods</li>
+                        <li><strong>Roadmap and Verdict:</strong> The single biggest change expected in the next 3 years, with a bull case and a bear case</li>
                     </ul>
 
                     <h3>Key Differentiators</h3>
                     <ul class="feature-list">
-                        <li><strong>Cross-Agent Collaboration:</strong> Integrates Strategy Agent (Moat analysis) and
-                            Risk Agent (Fraud indicators) outputs</li>
-                        <li><strong>Privacy-First Architecture:</strong> Zero disk footprint - all PDF processing in
-                            virtual memory (io.BytesIO)</li>
-                        <li><strong>Sequential Orchestration:</strong> LangGraph manages dependencies and API rate
-                            limits intelligently</li>
-                        <li><strong>Automated Data Retrieval:</strong> Web automation for Screener.in login and document
-                            downloads</li>
+                        <li><strong>Pitch vs Reality:</strong> Grounds management's claims in an independent credit rating report</li>
+                        <li><strong>Category-Aware Lens:</strong> Looks for different evidence depending on the type of company</li>
+                        <li><strong>Handles Large Decks:</strong> Automatically switches to section-by-section (map-reduce) analysis when a presentation is too large</li>
+                        <li><strong>Feeds Other Agents:</strong> Its sector KPIs are passed to the Valuation and Qualitative agents</li>
                     </ul>
                 </div>
 
@@ -139,12 +119,10 @@
         <div class="project-container">
             <h2>System Architecture</h2>
             <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
-                The Qualitative Analysis Agent follows a sequential workflow with cross-agent collaboration.
-                Below is the detailed architecture showing data flow, agent interactions, and the 4-step analysis
-                framework.
+                The Strategy Agent follows a two-step workflow: the downloader fetches the investor presentation and credit report into memory, and the agent reads both to produce the investment memo.
             </p>
             <div class="architecture-container">
-                <iframe src="qualitative-agent-architecture.html" frameborder="0" width="100%" height="600"
+                <iframe src="strategy-agent-architecture.html" frameborder="0" width="100%" height="600"
                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
             </div>
         </div>
@@ -165,23 +143,23 @@
                 </div>
                 <div class="tech-item">
                     <h4>Gemini AI</h4>
-                    <p>NLP and sentiment analysis</p>
+                    <p>Document analysis and memo writing</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Tavily API</h4>
-                    <p>Intelligent web search for Scuttlebutt</p>
+                    <h4>pypdf</h4>
+                    <p>Text extraction from presentations and reports</p>
                 </div>
                 <div class="tech-item">
                     <h4>Screener.in</h4>
                     <p>Automated document retrieval</p>
                 </div>
                 <div class="tech-item">
-                    <h4>io.BytesIO</h4>
-                    <p>In-memory data processing</p>
+                    <h4>Playwright</h4>
+                    <p>Web automation for login and downloads</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Selenium/Playwright</h4>
-                    <p>Web automation for login</p>
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory data processing</p>
                 </div>
                 <div class="tech-item">
                     <h4>Streamlit</h4>
@@ -195,7 +173,7 @@
     <section class="project-cta-section">
         <div class="project-container">
             <h2>Try It Yourself</h2>
-            <p>Experience the power of AI-driven qualitative stock analysis</p>
+            <p>Experience AI-driven strategic stock analysis</p>
             <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                 class="cta-button primary large" target="_blank">Launch Application</a>
         </div>

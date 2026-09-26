@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="AI Qualitative Analysis Agent - Intelligent stock analysis using earnings transcripts and web research">
-    <meta name="keywords" content="AI, Stock Analysis, Qualitative Analysis, LangGraph, Gemini AI">
+        content="AI Risk Analysis Agent - structured risk profiles from credit rating agency reports">
+    <meta name="keywords" content="AI, Stock Analysis, Risk Analysis, Credit Rating, LangGraph, Gemini AI">
     <meta name="author" content="ZABISK">
-    <title>AI Qualitative Analysis Agent | ZABISK</title>
+    <title>AI Risk Analysis Agent | ZABISK</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,11 +45,10 @@
     <section class="project-hero">
         <div class="project-hero-content">
             <div class="breadcrumb">
-                <a href="../index.html">Portfolio</a> / <span>Qualitative Analysis Agent</span>
+                <a href="../index.html">Portfolio</a> / <span>Risk Analysis Agent</span>
             </div>
-            <h1>AI Qualitative Analysis Agent</h1>
-            <p class="project-tagline">This Agent performs Qualitative analysis for a given stock using
-                transcripts downloaded from screener.in and websearch using Tavily API</p>
+            <h1>AI Risk Analysis Agent</h1>
+            <p class="project-tagline">This agent performs risk analysis using the company's credit rating report and produces a structured risk profile</p>
             <div class="project-hero-cta">
                 <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                     class="cta-button primary" target="_blank">Launch Application</a>
@@ -57,7 +56,7 @@
             </div>
         </div>
         <div class="project-hero-image">
-            <img src="../assets/images/qualitative_agent_card_1768542479672.png" alt="Qualitative Analysis Agent">
+            <img src="../assets/images/risk_agent_card_1768542430151.png" alt="Risk Analysis Agent">
         </div>
     </section>
 
@@ -69,48 +68,29 @@
                 <div class="content-main">
                     <h3>The Challenge</h3>
                     <p>
-                        Comprehensive qualitative stock analysis requires tracking regulatory compliance, analyzing
-                        management
-                        sentiment across quarters, gathering market intelligence from multiple sources, and integrating
-                        insights
-                        from strategy and risk assessments. Manual analysis is time-intensive and prone to missing
-                        subtle signals.
+                        Credit rating agency reports are one of the best independent views of a company's financial health, but they are long, technical, and written in different formats by different agencies. An old report can also be mistaken for a current one.
                     </p>
 
                     <h3>The Solution</h3>
                     <p>
-                        The AI Qualitative Analysis Agent performs sophisticated, sequential analysis using a 4-step
-                        framework.
-                        It integrates context from Strategy and Risk agents, processes earnings transcripts in RAM for
-                        privacy,
-                        and leverages web intelligence to provide comprehensive qualitative insights. The agent checks
-                        SEBI compliance,
-                        analyzes management tone, compares quarter-over-quarter sentiment shifts, and performs
-                        "Scuttlebutt" market research.
+                        The AI Risk Analysis Agent fetches the company's latest available credit rating report, checks that the file is valid, and extracts its text. Acting as a sceptical credit analyst, it produces a structured risk profile that focuses on whether the company can survive a downturn, and it states the date of the report so the reader knows how current the analysis is.
                     </p>
 
-                    <h3>Sequential Analysis Framework</h3>
+                    <h3>Risk Profile Framework</h3>
                     <ul class="feature-list">
-                        <li><strong>SEBI Violation Check:</strong> Automated regulatory compliance screening for Indian
-                            market violations</li>
-                        <li><strong>Latest Concall Analysis:</strong> Sentiment detection, management tone, and forward
-                            guidance extraction</li>
-                        <li><strong>QoQ Comparison:</strong> Quarter-over-quarter tracking of management sentiment and
-                            strategic priority shifts</li>
-                        <li><strong>Scuttlebutt Intelligence:</strong> Web-based market research gathering customer,
-                            supplier, and expert opinions</li>
+                        <li><strong>Company Overview:</strong> What the company does, with the date of the report being analysed</li>
+                        <li><strong>Credit Rating and Outlook:</strong> The long-term rating and outlook, for example AA+ / Stable</li>
+                        <li><strong>Key Strengths:</strong> Competitive advantages and market position</li>
+                        <li><strong>Structural Risks:</strong> Promoter issues, working capital traps and exposure to industry cycles</li>
+                        <li><strong>Liquidity and Debt:</strong> Cash reserves, debt levels, interest coverage and key debt ratios</li>
                     </ul>
 
                     <h3>Key Differentiators</h3>
                     <ul class="feature-list">
-                        <li><strong>Cross-Agent Collaboration:</strong> Integrates Strategy Agent (Moat analysis) and
-                            Risk Agent (Fraud indicators) outputs</li>
-                        <li><strong>Privacy-First Architecture:</strong> Zero disk footprint - all PDF processing in
-                            virtual memory (io.BytesIO)</li>
-                        <li><strong>Sequential Orchestration:</strong> LangGraph manages dependencies and API rate
-                            limits intelligently</li>
-                        <li><strong>Automated Data Retrieval:</strong> Web automation for Screener.in login and document
-                            downloads</li>
+                        <li><strong>Multi-Agency Support:</strong> Works with reports from CRISIL, ICRA, CARE, India Ratings and other agencies, in PDF or HTML</li>
+                        <li><strong>Report Date Transparency:</strong> Every profile states the date of the underlying report</li>
+                        <li><strong>Input Validation:</strong> Detects broken or invalid downloads before analysis, and falls back to an alternative report link when one fails</li>
+                        <li><strong>Feeds Other Agents:</strong> Its risk profile is reused by the Qualitative and Synthesis agents</li>
                     </ul>
                 </div>
 
@@ -139,12 +119,10 @@
         <div class="project-container">
             <h2>System Architecture</h2>
             <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
-                The Qualitative Analysis Agent follows a sequential workflow with cross-agent collaboration.
-                Below is the detailed architecture showing data flow, agent interactions, and the 4-step analysis
-                framework.
+                The Risk Agent follows a two-step workflow: the downloader fetches the credit rating report into memory, and the agent turns it into a structured risk profile.
             </p>
             <div class="architecture-container">
-                <iframe src="qualitative-agent-architecture.html" frameborder="0" width="100%" height="600"
+                <iframe src="risk-agent-architecture.html" frameborder="0" width="100%" height="600"
                     style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
             </div>
         </div>
@@ -165,23 +143,23 @@
                 </div>
                 <div class="tech-item">
                     <h4>Gemini AI</h4>
-                    <p>NLP and sentiment analysis</p>
+                    <p>Credit report analysis</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Tavily API</h4>
-                    <p>Intelligent web search for Scuttlebutt</p>
+                    <h4>pypdf</h4>
+                    <p>Text extraction from rating reports</p>
                 </div>
                 <div class="tech-item">
                     <h4>Screener.in</h4>
                     <p>Automated document retrieval</p>
                 </div>
                 <div class="tech-item">
-                    <h4>io.BytesIO</h4>
-                    <p>In-memory data processing</p>
+                    <h4>Playwright</h4>
+                    <p>Web automation for login and downloads</p>
                 </div>
                 <div class="tech-item">
-                    <h4>Selenium/Playwright</h4>
-                    <p>Web automation for login</p>
+                    <h4>io.BytesIO</h4>
+                    <p>In-memory data processing</p>
                 </div>
                 <div class="tech-item">
                     <h4>Streamlit</h4>
@@ -195,7 +173,7 @@
     <section class="project-cta-section">
         <div class="project-container">
             <h2>Try It Yourself</h2>
-            <p>Experience the power of AI-driven qualitative stock analysis</p>
+            <p>Experience AI-driven credit risk analysis</p>
             <a href="https://ai-stock-analysis-agent-axfhmqczcpjjgrnd7ytvyv.streamlit.app/"
                 class="cta-button primary large" target="_blank">Launch Application</a>
         </div>
