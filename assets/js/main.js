@@ -138,6 +138,85 @@ document.addEventListener('DOMContentLoaded', function () {
     animateElements.forEach(el => observer.observe(el));
 
     // ==========================================
+    // Expand Diagram Popup (phones only; button hidden by CSS above 768px)
+    // ==========================================
+    const diagrams = document.querySelectorAll('.architecture-container, .arch-figure');
+    const DIAGRAM_WIDTH = 1200; // iframe diagrams are laid out at desktop width, then scaled to fit
+
+    diagrams.forEach(container => {
+        const source = container.querySelector('iframe, img');
+        if (!source) return;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'diagram-expand-btn';
+        button.textContent = 'Expand diagram';
+        button.addEventListener('click', () => openDiagram(source));
+        container.insertAdjacentElement('afterend', button);
+    });
+
+    let overlay = null;
+
+    function openDiagram(source) {
+        overlay = document.createElement('div');
+        overlay.className = 'diagram-overlay';
+        overlay.innerHTML =
+            '<button type="button" class="diagram-close" aria-label="Close diagram">&times;</button>' +
+            '<p class="diagram-hint">Pinch to zoom. Turn your phone sideways for a bigger view.</p>' +
+            '<div class="diagram-stage"></div>';
+        const stage = overlay.querySelector('.diagram-stage');
+
+        if (source.tagName === 'IMG') {
+            const img = document.createElement('img');
+            img.src = source.src;
+            img.alt = source.alt;
+            stage.appendChild(img);
+        } else {
+            const frame = document.createElement('iframe');
+            frame.src = source.getAttribute('src');
+            frame.setAttribute('frameborder', '0');
+            frame.style.width = DIAGRAM_WIDTH + 'px';
+            frame.addEventListener('load', () => {
+                frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px';
+                fitFrame(stage, frame);
+            });
+            stage.appendChild(frame);
+        }
+
+        overlay.querySelector('.diagram-close').addEventListener('click', () => history.back());
+        document.body.appendChild(overlay);
+        document.body.classList.add('diagram-open');
+
+        // Back gesture closes the popup instead of leaving the page
+        history.pushState({ diagramOpen: true }, '');
+    }
+
+    function fitFrame(stage, frame) {
+        const scale = stage.clientWidth / DIAGRAM_WIDTH;
+        frame.style.transform = 'scale(' + scale + ')';
+        stage.style.height = frame.offsetHeight * scale + 'px';
+    }
+
+    function closeDiagram() {
+        if (!overlay) return;
+        overlay.remove();
+        overlay = null;
+        document.body.classList.remove('diagram-open');
+    }
+
+    window.addEventListener('popstate', closeDiagram);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay) history.back();
+    });
+
+    window.addEventListener('resize', () => {
+        if (!overlay) return;
+        const frame = overlay.querySelector('iframe');
+        if (frame && frame.style.height) fitFrame(overlay.querySelector('.diagram-stage'), frame);
+    });
+
+    // ==========================================
     // Smooth Page Load
     // ==========================================
     document.body.style.opacity = '0';
