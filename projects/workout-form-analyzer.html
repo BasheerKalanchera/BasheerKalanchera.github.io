@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Workout Form Analyzer - pose detection that counts squat reps, scores form and replays your workout">
+    <meta name="keywords" content="AI, Computer Vision, Pose Detection, YOLOv8, Fitness, Streamlit">
+    <meta name="author" content="ZABISK">
+    <title>AI Workout Form Analyzer | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>Workout Form Analyzer</span>
+            </div>
+            <h1>AI Workout Form Analyzer</h1>
+            <p class="project-tagline">Pose detection that tracks your squats through your phone or webcam, counts reps, scores each rep's form and replays your workout</p>
+            <div class="project-hero-cta">
+                <a href="https://pose-detection-tanhp2dwvhvyrrsqfvtrny.streamlit.app/"
+                    class="cta-button primary" target="_blank">Launch Application</a>
+                <a href="#overview" class="cta-button secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/workout_card_landscape_card_image.png" alt="Workout Form Analyzer">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Without a coach it is hard to know whether a squat is deep enough or whether you are leaning too far forward. Counting reps while concentrating on form is distracting, and simply filming yourself shows what happened without telling you what went wrong.
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        The AI Workout Form Analyzer runs a YOLOv8 pose model on live video from your browser and draws a stick figure over your body in real time. It records the session with timestamps, and when you finish it analyses the recording: it measures knee and hip angles frame by frame, counts completed reps, scores each one, and lets you replay the workout frame by frame or download it as a video.
+                    </p>
+
+                    <h3>How It Works</h3>
+                    <ul class="feature-list">
+                        <li><strong>Live Pose Tracking:</strong> Detects 17 body keypoints on every frame and overlays a stick figure on the live video</li>
+                        <li><strong>Session Recording:</strong> Captures about 3 frames a second, each with its keypoints and capture time</li>
+                        <li><strong>Rep Counting:</strong> Follows each squat through four stages and only counts a rep after a brief hold at the bottom, so bounces and shallow squats are ignored</li>
+                        <li><strong>Form Scoring:</strong> Compares knee depth and hip angle with an exercise template and scores each rep as Perfect, Good, Fair or Poor, with tips such as "Go deeper" or "Chest up"</li>
+                        <li><strong>Workout Replay:</strong> Frame-by-frame replay with play controls, plus MP4 download of the annotated workout</li>
+                    </ul>
+
+                    <h3>Key Differentiators</h3>
+                    <ul class="feature-list">
+                        <li><strong>Runs in the Browser:</strong> Works on a phone or laptop with just a camera, with nothing to install</li>
+                        <li><strong>Real Timing:</strong> Frames are timestamped at capture, so the post-workout analysis sees how long you actually held each position</li>
+                        <li><strong>Template-Driven Exercises:</strong> Ideal angles and form checks live in an exercise template, so new exercises can be added without rewriting the analysis (squats today)</li>
+                        <li><strong>Session-Only Storage:</strong> The recording stays in memory for the session and nothing is saved unless you download it</li>
+                    </ul>
+                    <h3>Tips for Best Results</h3>
+                    <ul class="feature-list">
+                        <li><strong>Camera access:</strong> Allow the browser to use your camera when you press START</li>
+                        <li><strong>Stand side-on:</strong> Turn your right side to the camera, with your whole body, including your feet, in view</li>
+                        <li><strong>Good lighting:</strong> A well-lit room helps the pose model find every joint</li>
+                        <li><strong>Steady pace:</strong> Squat at a steady speed and pause briefly at the bottom</li>
+                        <li><strong>See your results:</strong> Press STOP, then tap Show Workout Summary</li>
+                        <li><strong>Network:</strong> Some office networks block live video; mobile data usually works</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>Computer Vision App</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Prototype (squats only)</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Category</h4>
+                        <p>Health &amp; Fitness</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="project-section architecture-section">
+        <div class="project-container">
+            <h2>System Architecture</h2>
+            <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
+                The app streams video from your browser, detects your pose on every frame, and records timestamped frames. When you open the summary, the recording is analysed to count reps, score form and build the replay.
+            </p>
+            <div class="architecture-container">
+                <iframe src="workout-form-analyzer-architecture.html" frameborder="0" width="100%" height="600"
+                    style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>YOLOv8-Pose</h4>
+                    <p>Ultralytics body keypoint detection</p>
+                </div>
+                <div class="tech-item">
+                    <h4>OpenCV</h4>
+                    <p>Frame processing and video export</p>
+                </div>
+                <div class="tech-item">
+                    <h4>NumPy</h4>
+                    <p>Joint angle calculations</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Streamlit</h4>
+                    <p>Interactive app UI</p>
+                </div>
+                <div class="tech-item">
+                    <h4>streamlit-webrtc</h4>
+                    <p>Live camera streaming (WebRTC)</p>
+                </div>
+                <div class="tech-item">
+                    <h4>PyAV</h4>
+                    <p>Video frame handling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Try It Yourself</h2>
+            <p>Try AI-powered squat analysis with your phone or webcam</p>
+            <a href="https://pose-detection-tanhp2dwvhvyrrsqfvtrny.streamlit.app/"
+                class="cta-button primary large" target="_blank">Launch Application</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
