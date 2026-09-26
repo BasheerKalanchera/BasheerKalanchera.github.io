@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Homeschooling Tutor - adaptive, voice-enabled CBSE tutor that teaches from your own textbook pages">
+    <meta name="keywords" content="AI, EdTech, Tutor, CBSE, Voice, Gemini AI, Streamlit">
+    <meta name="author" content="ZABISK">
+    <title>AI Homeschooling Tutor | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>Homeschooling Tutor</span>
+            </div>
+            <h1>AI Homeschooling Tutor</h1>
+            <p class="project-tagline">An adaptive, voice-enabled tutor for CBSE students (Grades 1-12) that teaches from the child's own textbook pages in English, Hindi or Malayalam</p>
+            <div class="project-hero-cta">
+                <a href="https://homeschooling-ai-tutor-na4dlr4oanw5uovyzmk8s6.streamlit.app/"
+                    class="cta-button primary" target="_blank">Launch Application</a>
+                <a href="#overview" class="cta-button secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/homeschooling_tutor_card_1768619052611.png" alt="Homeschooling Tutor">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Homeschooling parents cannot always sit beside their child for every subject. Generic AI chatbots give away answers instead of teaching, drift away from the school syllabus, and are hard for young children to use by typing. Regional-language textbooks, often scanned, add another barrier.
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        The AI Homeschooling Tutor, "Gyan Mitra", reads the child's actual textbook chapter, whether a clean PDF, a scanned page or a photo, and teaches strictly from it. Children can talk to it and hear its replies, in an Indian accent for Hindi and Malayalam. It teaches through guiding questions, reviews key points, runs quizzes, and adapts its explanations as it tracks how well the child is doing.
+                    </p>
+
+                    <h3>How It Works</h3>
+                    <ul class="feature-list">
+                        <li><strong>Load the Chapter:</strong> Upload textbook PDFs or photos, or pick a sample chapter; scanned pages are read with OCR in English, Hindi or Malayalam</li>
+                        <li><strong>Talk or Type:</strong> Children can speak their answers or type them; replies are read aloud</li>
+                        <li><strong>Three Modes:</strong> Learn (guiding questions), Review (summaries and key points) and Quiz</li>
+                        <li><strong>Adaptive Difficulty:</strong> Tracks right and wrong answers and moves between Struggling, Getting It and Mastered, simplifying when the child struggles</li>
+                        <li><strong>Progress Dashboard:</strong> Streaks, study time, quiz scores, subject performance and weak areas. The dashboard is built; connecting it to live tutoring sessions is in progress</li>
+                    </ul>
+
+                    <h3>Key Differentiators</h3>
+                    <ul class="feature-list">
+                        <li><strong>Syllabus-Grounded:</strong> Every explanation and question is based on the uploaded textbook pages, not general internet knowledge</li>
+                        <li><strong>Teaches, Doesn't Tell:</strong> Socratic method in Learn mode: one small idea or question at a time, with the direct answer only when the child is truly stuck</li>
+                        <li><strong>Multilingual Reading:</strong> Detects native versus scanned PDFs and runs OCR with Hindi and Malayalam language packs</li>
+                        <li><strong>Made for Listening:</strong> Each reply has a display version with proper maths notation and a speech version spelled out for text-to-speech</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>EdTech AI Tutor</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Prototype</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Category</h4>
+                        <p>Edutech</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="project-section architecture-section">
+        <div class="project-container">
+            <h2>System Architecture</h2>
+            <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
+                Textbook pages are read once and turned into lesson context. Each question from the child, spoken or typed, goes to Gyan Mitra together with the current mode and mastery level, and the reply comes back both on screen and as speech.
+            </p>
+            <div class="architecture-container">
+                <iframe src="homeschooling-tutor-architecture.html" frameborder="0" width="100%" height="600"
+                    style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Python</h4>
+                    <p>Core programming language</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Google Gemini</h4>
+                    <p>Multimodal tutoring LLM</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Streamlit</h4>
+                    <p>Interactive app UI</p>
+                </div>
+                <div class="tech-item">
+                    <h4>PyMuPDF</h4>
+                    <p>PDF text and page rendering</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Tesseract OCR</h4>
+                    <p>English, Hindi and Malayalam OCR</p>
+                </div>
+                <div class="tech-item">
+                    <h4>SpeechRecognition</h4>
+                    <p>Voice-to-text input</p>
+                </div>
+                <div class="tech-item">
+                    <h4>gTTS</h4>
+                    <p>Text-to-speech with accent control</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Plotly</h4>
+                    <p>Progress dashboard charts</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Try It Yourself</h2>
+            <p>Try the AI tutor with a sample CBSE chapter</p>
+            <a href="https://homeschooling-ai-tutor-na4dlr4oanw5uovyzmk8s6.streamlit.app/"
+                class="cta-button primary large" target="_blank">Launch Application</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
