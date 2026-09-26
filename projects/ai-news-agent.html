@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI News Agent - self-hosted n8n agent that builds a ranked Morning AI Executive Summary from tech news feeds">
+    <meta name="keywords" content="AI, News, Automation, n8n, Docker, Google Gemini, RSS">
+    <meta name="author" content="ZABISK">
+    <title>AI News Agent | ZABISK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-detail.css">
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <nav>
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="ZABISK Logo" class="logo">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="../index.html#work" class="nav-link">Back to Portfolio</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="breadcrumb">
+                <a href="../index.html">Portfolio</a> / <span>AI News Agent</span>
+            </div>
+            <h1>AI News Agent</h1>
+            <p class="project-tagline">A self-hosted AI agent that turns the last 24 hours of tech news into a short, ranked "Morning AI Executive Summary"</p>
+            <div class="project-hero-cta">
+                <a href="#overview" class="cta-button primary">Learn More</a>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../assets/images/ai_news_agent_card_1768617750617.png" alt="AI News Agent">
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="project-section" id="overview">
+        <div class="project-container">
+            <h2>Overview</h2>
+            <div class="content-grid">
+                <div class="content-main">
+                    <h3>The Challenge</h3>
+                    <p>
+                        Keeping up with AI means scanning dozens of headlines every day across several sources, and most of them are not about AI at all: general tech, politics, conflicts, markets. Reading everything takes time, and a simple list of links does not tell you what matters most.
+                    </p>
+
+                    <h3>The Solution</h3>
+                    <p>
+                        The AI News Agent runs as an n8n workflow in Docker on a laptop. With one click it collects the latest stories from Techmeme and The Rundown AI, keeps the last 24 hours, and applies free, rule-based filtering to remove off-topic and duplicate stories. Google Gemini then ranks the shortlist by importance, drops the noise, and the agent builds a clean executive briefing with the most important stories first and a direct link to each original article.
+                    </p>
+
+                    <h3>How It Works</h3>
+                    <ul class="feature-list">
+                        <li><strong>One-Click Trigger:</strong> Open the briefing form and press Generate Report</li>
+                        <li><strong>Collect:</strong> Pulls the latest stories from the Techmeme and The Rundown AI RSS feeds</li>
+                        <li><strong>Freshness Filter:</strong> Keeps only stories from the last 24 hours and merges both feeds</li>
+                        <li><strong>Keyword Shortlist:</strong> Keeps AI-related stories, drops off-topic ones such as conflicts, elections and sports, removes duplicates, and caps the list at the 15 newest</li>
+                        <li><strong>AI Ranking:</strong> Google Gemini classifies each story as High, Medium or Low importance from its headline and opening lines; Low stories are dropped and High stories are shown first</li>
+                        <li><strong>Executive Briefing:</strong> A clean summary page with each story's headline, a short description and a direct link to the original article</li>
+                    </ul>
+
+                    <h3>Key Differentiators</h3>
+                    <ul class="feature-list">
+                        <li><strong>Cheap Before Smart:</strong> Free, instant keyword rules do the bulk filtering, so the AI is only used where judgment is needed</li>
+                        <li><strong>Built for Free-Tier Limits:</strong> Stories are ranked two at a time with a pause, and only short text is sent, keeping within API rate limits</li>
+                        <li><strong>Failure-Tolerant:</strong> If the AI service fails on a story, that story is skipped and the briefing is still delivered</li>
+                        <li><strong>Self-Hosted and Editable:</strong> Runs in Docker on a laptop; the keyword lists and ranking rules are plain text that can be tuned without code changes</li>
+                    </ul>
+                    <h3>Lessons From Building It</h3>
+                    <ul class="feature-list">
+                        <li><strong>Filter first:</strong> Sending every story to the AI hit rate limits within seconds; a keyword pre-filter cut the AI's workload to a short, relevant list</li>
+                        <li><strong>Model choice matters:</strong> A reasoning model "thought out loud" instead of giving the strict answer format the ranking step needs; a Flash-Lite model followed the format reliably</li>
+                        <li><strong>Send less text:</strong> Some feeds include whole newsletters; sending only the headline and opening lines made ranking faster and more reliable</li>
+                    </ul>
+                </div>
+
+                <div class="content-sidebar">
+                    <div class="info-card">
+                        <h4>Project Type</h4>
+                        <p>AI Automation Agent</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Status</h4>
+                        <p>Personal Tool (self-hosted)</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h4>Category</h4>
+                        <p>News &amp; Research</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="project-section architecture-section">
+        <div class="project-container">
+            <h2>System Architecture</h2>
+            <p class="text-description" style="max-width: 900px; margin: 0 auto var(--spacing-md);">
+                The agent is a single n8n workflow. Rule-based steps narrow the news down to a short, relevant list, and only then does Google Gemini rank it, before the briefing is built and shown in the browser.
+            </p>
+            <div class="architecture-container">
+                <iframe src="ai-news-agent-architecture.html" frameborder="0" width="100%" height="600"
+                    style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="project-section tech-section">
+        <div class="project-container">
+            <h2>Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>n8n</h4>
+                    <p>Workflow automation and AI nodes</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Docker Desktop</h4>
+                    <p>Self-hosted runtime on a laptop</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Google Gemini</h4>
+                    <p>Flash-Lite importance ranking</p>
+                </div>
+                <div class="tech-item">
+                    <h4>LangChain</h4>
+                    <p>Text classification inside n8n</p>
+                </div>
+                <div class="tech-item">
+                    <h4>RSS</h4>
+                    <p>Techmeme and The Rundown AI feeds</p>
+                </div>
+                <div class="tech-item">
+                    <h4>JavaScript</h4>
+                    <p>Keyword filter and briefing layout</p>
+                </div>
+                <div class="tech-item">
+                    <h4>n8n Forms</h4>
+                    <p>One-click trigger and report page</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="project-cta-section">
+        <div class="project-container">
+            <h2>Want a Briefing Like This?</h2>
+            <p>This agent runs privately on a laptop. Get in touch to build a news or research briefing tailored to your team.</p>
+            <a href="../index.html#contact" class="cta-button primary large">Let's Talk</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ZABISK | Basheer Kalanchera</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+
+</html>
